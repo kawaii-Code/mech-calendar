@@ -1,0 +1,29 @@
+<header id="top">
+    <h1>МехКалендарь</h1>
+    <nav>
+        <ul>
+          <li><a href="/"><%= t('today_link') %></a></li>
+          <li><a href="/calendar"><%= t('full_calendar_link') %></a></li>
+          <li><a href="/about"><%= t('about_link') %></a></li>
+
+          <li><%= link_to 'English', switch_lang_path(lang: 'en') %></li>
+          <li><%= link_to 'Русский', switch_lang_path(lang: 'ru') %></li>
+        </ul>
+    </nav>
+</header>
+
+<%= javascript_include_tag "today" %>
+
+<div class="container">
+  <h1><%= t('how_was_your_day') %></h1>
+
+  <div>
+    <button id="bad-day"><%= t('bad') %></button>
+    <h1 id="current-date"></h1>
+    <button id="good-day"><%= t('good') %></button>
+  </div>
+</div>
+
+<div id="footer">
+  <a href="#top"><%= t('back_to_top') %></a>
+</div>

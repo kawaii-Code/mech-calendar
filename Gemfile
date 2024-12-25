@@ -63,3 +63,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "importmap-rails", "~> 2.1"
+
+gem "tailwindcss-rails", "~> 3.0"
+
+gem "webpacker", "~> 5.4"

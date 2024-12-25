@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'about' => 'home#about'
+  get 'calendar' => 'home#calendar'
+  get 'up' => 'rails/health#show', as: :rails_health_check
+  get 'switch_lang' => 'application#switch_lang'
 end

@@ -28,4 +28,20 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  title: "MechCalendar"
+  today_link: "Today"
+  full_calendar_link: "Your life"
+  about_link: "About"
+
+  how_was_your_day: "How was your day?"
+
+  bad: "Bad"
+  good: "Good"
+
+  back_to_top: "Back to top"
+  about: >
+    This website keeps track of your life
+    You can mark each day as good or bad, and,
+    over time, collect the stats of your life.
+    Then you can take a look at your whole life
+    and get some insights into how you live.
