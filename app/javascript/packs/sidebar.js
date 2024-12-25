@@ -13,4 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
         sidebar.classList.add('-translate-x-full');
         overlay.classList.add('hidden');
     });
+
+    overlay.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+    });
 });
