@@ -28,15 +28,18 @@
 #       enabled: "ON"
 
 en:
-  title: "MechCalendar"
-  today_link: "Today"
-  full_calendar_link: "Your life"
+  website_title: "MechCalendar"
+  hi: "Hi!"
+  today: "Today"
+  full_calendar: "View full calendar"
   about_link: "About"
 
   how_was_your_day: "How was your day?"
 
   bad: "Bad"
   good: "Good"
+
+  toggle_language: "Change language"
 
   back_to_top: "Back to top"
   about: >

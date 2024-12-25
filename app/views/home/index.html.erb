@@ -1,29 +1,18 @@
-<header id="top">
-    <h1>МехКалендарь</h1>
-    <nav>
-        <ul>
-          <li><a href="/"><%= t('today_link') %></a></li>
-          <li><a href="/calendar"><%= t('full_calendar_link') %></a></li>
-          <li><a href="/about"><%= t('about_link') %></a></li>
+<%= javascript_pack_tag "swipe" %>
 
-          <li><%= link_to 'English', switch_lang_path(lang: 'en') %></li>
-          <li><%= link_to 'Русский', switch_lang_path(lang: 'ru') %></li>
-        </ul>
-    </nav>
-</header>
 
-<%= javascript_include_tag "today" %>
+<div class="flex text-3xl justify-center items-center h-1/4">
+  <h1 class="mt-10"><%= t('hi') %></h1>
+</div>
 
-<div class="container">
-  <h1><%= t('how_was_your_day') %></h1>
-
-  <div>
-    <button id="bad-day"><%= t('bad') %></button>
-    <h1 id="current-date"></h1>
-    <button id="good-day"><%= t('good') %></button>
+<div class="flex justify-center items-center h-1/2">
+  <div class="w-auto h-1/2 bg-white border border-gray-300 rounded-lg shadow-md flex flex-col justify-center items-center transition-transform duration-100 ease-in-out" id="swipe-widget">
+    <h2 class="m-4 no-select text-lg font-semibold text-center"><%= t('how_was_your_day') %></h2>
   </div>
 </div>
 
+<!-- 
 <div id="footer">
-  <a href="#top"><%= t('back_to_top') %></a>
+  <a href="#top"><%# t('back_to_top') %></a>
 </div>
+-->

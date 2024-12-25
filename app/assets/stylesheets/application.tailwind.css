@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* https://stackoverflow.com/questions/4192277/disable-horizontal-scroll-on-mobile-web */
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+#footer {
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    width: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #888;
+}
+
+.no-select {
+    user-select: none; /* Standard syntax */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
