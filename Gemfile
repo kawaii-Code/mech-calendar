@@ -69,3 +69,5 @@ gem "importmap-rails", "~> 2.1"
 gem "tailwindcss-rails", "~> 3.0"
 
 gem "webpacker", "~> 5.4"
+
+gem "irb", "~> 1.14"

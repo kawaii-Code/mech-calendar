@@ -1,0 +1,9 @@
+<%= render "flashes" %>
+
+<% content_for :content do %>
+  <div class="p-8 mx-auto md:w-2/3 w-full">
+    <%= yield %>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

@@ -1,0 +1,23 @@
+<h1 class="mt-32 text-center font-bold text-1xl sm:text-4xl"><%= t("sign_up") %></h1>
+
+<%= form_with model: @user, url: signup_url, class: "contents" do |form| %>
+  <div class="w-full flex flex-col items-center justify-center">
+    <div class="my-1 max-w-md">
+      <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: t("enter_your_email_address"), maxlength: 72, value: params[:email_address], class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="my-1 max-w-md">
+      <%= form.password_field :password, required: true, placeholder: t("enter_your_password"), maxlength: 72, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="my-1 max-w-md">
+      <%= form.password_field :password_confirmation, required: true, placeholder: t("confirm_your_password"), maxlength: 72, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="my-4 col-span-6 sm:flex sm:items-center sm:gap-4 max-w-md">
+      <div class="inline">
+        <%= form.submit t("sign_up"), class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+      </div>
+    </div>
+  </div>
+<% end %>

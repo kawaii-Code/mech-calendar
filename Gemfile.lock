@@ -357,6 +357,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   importmap-rails (~> 2.1)
+  irb (~> 1.14)
   jbuilder
   jsbundling-rails
   kamal

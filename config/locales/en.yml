@@ -29,19 +29,31 @@
 
 en:
   website_title: "MechCalendar"
+
+  # Auth
+  sign_up: "Sign up"
+  sign_in: "Sign in"
+  enter_your_email_address: "Enter your email address"
+  enter_your_password: "Enter your password"
+  confirm_your_password: "Confirm your password"
+  forgot_password: "Forgot password?"
+
+  # Main page
   hi: "Hi!"
-  today: "Today"
-  full_calendar: "View full calendar"
-  about_link: "About"
-
-  how_was_your_day: "How was your day?"
-
   bad: "Bad"
   good: "Good"
+  how_was_your_day: "How was your day?"
 
+  # Sidebar
+  today: "Today"
+  you_are_logged_in_as: "You are logged in as:"
+  full_calendar: "View full calendar"
+  about_link: "About"
   toggle_language: "Change language"
-
   back_to_top: "Back to top"
+  logout: "Logout"
+
+  # About
   about: >
     This website keeps track of your life
     You can mark each day as good or bad, and,
