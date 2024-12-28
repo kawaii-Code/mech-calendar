@@ -1,6 +1,6 @@
 <%= render 'sidebar' %>
 
-<% if Day.find_by(user_id: User.current) then %>
+<% if Day.find_by(user_id: User.current) == nil then %>
   <%= javascript_pack_tag "swipe" %>
 
   <div class="flex text-3xl justify-center items-center h-1/4">
@@ -14,8 +14,8 @@
   </div>
 
   <div class="fullscreen pointer-events-none z-10">
-    <img class="z-10 hidden no-select absolute left-0 bottom-0" id="left-gradient" src="gradient-red.png"></img>
-    <img class="z-10 hidden no-select absolute right-0 bottom-0" id="right-gradient" src="gradient-green.png"></img>
+    <img class="z-10 hidden no-select fixed left-0 bottom-0" id="left-gradient" src="gradient-red.png"></img>
+    <img class="z-10 hidden no-select fixed right-0 bottom-0" id="right-gradient" src="gradient-green.png"></img>
   </div>
 <% else %>
   <h2>Вы уже поставиил оцеку</h2>
