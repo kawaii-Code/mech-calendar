@@ -54,9 +54,19 @@ en:
   logout: "Logout"
 
   # About
-  about: >
-    This website keeps track of your life
-    You can mark each day as good or bad, and,
-    over time, collect the stats of your life.
-    Then you can take a look at your whole life
-    and get some insights into how you live.
+  about_first: >
+    Welcome to MechCalendar
+
+  about_second:
+    This is a simple website that will help you better
+    understand yourself and your feelings. Every day, you
+    can visit the site and mark your day as good or bad. In
+    this way, you leave a personal history of your life in
+    the calendar and how you perceive it. The site compiles
+    statistics about your good and bad days, as well as the
+    ups and downs over the past month and throughout your
+    time using the site.
+
+  about_third:
+    We hope that over time, MechCalendar will become a
+    valuable source of information about your inner state!
