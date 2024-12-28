@@ -2,7 +2,7 @@ require 'test_helper'
 
 class DayTest < ActiveSupport::TestCase
   def setup
-    @user = User.create!(email_address: "Test User") # Предполагается, что у вас есть модель User
+    @user = User.create!(email_address: "Test User", password: "password")
     @day = Day.new(date: Date.today, rating: 'good', user: @user)
   end
 
