@@ -1,9 +1,7 @@
  class DaysController < ApplicationController
-    before_action :authenticate_user!
-
     def create
-      @day = current_user.days.find_or_initialize_by(date: Date.today)
-      @day.rating = params[:rating]
+      current_user = User.find(Current.session.user_id)
+      @day = Day.new(user: current_user, date: Date.today, rating: rating_params)
 
       if @day.save
         flash[:notice] = "Ваш день был успешно оценен!"
@@ -12,5 +10,11 @@
       end
 
       redirect_to root_path
+    end
+
+    private
+
+    def rating_params
+      return params.require(:rating)
     end
   end

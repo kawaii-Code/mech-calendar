@@ -28,6 +28,19 @@ body {
     background-color: #888;
 }
 
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -50;
+}
+
+.stick-right {
+    flow: right;
+}
+
 .no-select {
     user-select: none; /* Standard syntax */
     -webkit-user-select: none; /* Safari */

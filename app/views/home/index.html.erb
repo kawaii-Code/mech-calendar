@@ -1,12 +1,22 @@
 <%= render 'sidebar' %>
-<%= javascript_pack_tag "swipe" %>
 
-<div class="flex text-3xl justify-center items-center h-1/4">
-  <h1 class="mt-10"><%= t('hi') %></h1>
-</div>
+<% if Day.find_by(user_id: User.current) then %>
+  <%= javascript_pack_tag "swipe" %>
 
-<div class="flex justify-center items-center h-1/2">
-  <div class="w-auto h-1/2 bg-white border border-gray-300 rounded-lg shadow-md flex flex-col justify-center items-center transition-transform duration-100 ease-in-out" id="swipe-widget">
-    <h2 class="m-4 no-select text-lg font-semibold text-center"><%= t('how_was_your_day') %></h2>
+  <div class="flex text-3xl justify-center items-center h-1/4">
+    <h1 class="mt-10"><%= t('hi') %></h1>
   </div>
-</div>
+
+  <div class="flex justify-center items-center h-1/2 z-20">
+    <div class="z-30 w-auto h-1/2 bg-white border border-gray-300 rounded-lg shadow-md flex flex-col justify-center items-center transition-transform duration-100 ease-in-out" id="swipe-widget">
+      <h2 class="m-4 no-select text-lg font-semibold text-center"><%= t('how_was_your_day') %></h2>
+    </div>
+  </div>
+
+  <div class="fullscreen pointer-events-none z-10">
+    <img class="z-10 hidden no-select absolute left-0 bottom-0" id="left-gradient" src="gradient-red.png"></img>
+    <img class="z-10 hidden no-select absolute right-0 bottom-0" id="right-gradient" src="gradient-green.png"></img>
+  </div>
+<% else %>
+  <h2>Вы уже поставиил оцеку</h2>
+<% end %>
