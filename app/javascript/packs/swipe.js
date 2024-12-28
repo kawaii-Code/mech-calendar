@@ -11,24 +11,44 @@ document.addEventListener('DOMContentLoaded', () => {
     widget.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
         widget.style.transition = 'none';
+
+        leftGradient.classList.remove('hidden');
+        rightGradient.classList.remove('hidden');
     });
 
+    let lastX;
     widget.addEventListener('touchmove', (e) => {
         const currentX = e.touches[0].clientX;
         const diffX = currentX - startX;
         moveWidget(widget, diffX);
+        lastX = currentX;
     });
 
-    widget.addEventListener('touchend', () => {
+    widget.addEventListener('touchend', (e) => {
+        const currentX = lastX;
+        if (isMouseAtLeftBorder(currentX)) {
+            sendDayReview('bad');
+            return;
+        }
+
+        if (isMouseAtRightBorder(currentX))  {
+            sendDayReview('good');
+            return;
+        }
+
         widget.style.transform = 'translateX(0)';
         widget.style.backgroundColor = 'white';
         widget.style.transition = 'background-color 0.3s ease, transform 0.3s ease';
+
+        leftGradient.classList.add('hidden');
+        rightGradient.classList.add('hidden');
     });
 
     widget.addEventListener('mousedown', (e) => {
         startX = e.clientX;
-        leftGradient.style.display = 'block';
-        rightGradient.style.display = 'block';
+
+        leftGradient.classList.remove('hidden');
+        rightGradient.classList.remove('hidden');
 
         widget.style.transition = 'none';
         widget.style.cursor = 'grabbing';
@@ -40,47 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const mouseUpHandler = (e) => {
-            leftGradient.style.display = 'none';
-            rightGradient.style.display = 'none';
-
             const mouseX = e.clientX;
             if (isMouseAtLeftBorder(mouseX)) {
-                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-                fetch('/day/new?rating=bad', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-Token': csrfToken
-                    },
-                }).then(response => {
-                    if (!response.ok) {
-                        console.error('error on post to /bad_day!');
-                    }
-                }).catch(error => {
-                    console.error('Error during POST: ', error);
-                });
-
+                sendDayReview('bad');
                 return;
             }
 
             if (isMouseAtRightBorder(mouseX))  {
-                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-                fetch('/day/new?rating=good', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-Token': csrfToken
-                    }
-                }).then(response => {
-                    if (!response.ok) {
-                        console.error('error on post to /good_day!');
-                    }
-                }).catch(error => {
-                    console.error('Error during POST: ', error);
-                });
-
+                sendDayReview('good');
                 return;
             }
 
@@ -88,6 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
             widget.style.backgroundColor = 'white';
             widget.style.transition = 'background-color 0.3s ease, transform 0.3s ease';
             widget.style.cursor = 'grab';
+
+            leftGradient.classList.add('hidden');
+            rightGradient.classList.add('hidden');
 
             document.removeEventListener('mousemove', mouseMoveHandler);
             document.removeEventListener('mouseup', mouseUpHandler);
@@ -97,6 +87,24 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('mouseup', mouseUpHandler);
     });
 });
+
+function sendDayReview(rating) {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    fetch('/day/new?rating=' + rating, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': csrfToken
+        },
+    }).then(response => {
+        if (!response.ok) {
+            console.error('error on post to /bad_day!');
+        }
+    }).catch(error => {
+        console.error('Error during POST: ', error);
+    });
+}
 
 function isMouseAtLeftBorder(mouseX) {
     return mouseX < threshold;

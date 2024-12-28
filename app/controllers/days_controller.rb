@@ -1,7 +1,6 @@
  class DaysController < ApplicationController
     def create
-      current_user = User.find(Current.session.user_id)
-      @day = Day.new(user: current_user, date: Date.today, rating: rating_params)
+      @day = Day.new(user: User.current, date: Date.today, rating: rating_params)
 
       if @day.save
         flash[:notice] = "Ваш день был успешно оценен!"
