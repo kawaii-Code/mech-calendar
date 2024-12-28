@@ -1,9 +1,9 @@
-require 'test_helper'
+require "test_helper"
 
 class DayTest < ActiveSupport::TestCase
   def setup
     @user = User.create!(email_address: "Test User", password: "password")
-    @day = Day.new(date: Date.today, rating: 'good', user: @user)
+    @day = Day.new(date: Date.today, rating: "good", user: @user)
   end
 
   test "should be valid" do
@@ -21,17 +21,17 @@ class DayTest < ActiveSupport::TestCase
   end
 
   test "rating should be good or bad" do
-    @day.rating = 'good'
+    @day.rating = "good"
     assert @day.valid?
-    @day.rating = 'bad'
+    @day.rating = "bad"
     assert @day.valid?
-    @day.rating = '12345'
+    @day.rating = "12345"
     assert_not @day.valid?
-    @day.rating = 'normal'
+    @day.rating = "normal"
     assert_not @day.valid?
-    @day.rating = 'bd'
+    @day.rating = "bd"
     assert_not @day.valid?
-    @day.rating = '⛅'
+    @day.rating = "⛅"
     assert_not @day.valid?
   end
 

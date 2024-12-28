@@ -5,6 +5,6 @@ class User < ApplicationRecord
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
   def self.current
-    return User.find(Current.session.user_id)
+    User.find(Current.session.user_id)
   end
 end

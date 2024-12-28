@@ -15,6 +15,6 @@
     private
 
     def rating_params
-      return params.require(:rating)
+      params.require(:rating)
     end
-  end
+ end
