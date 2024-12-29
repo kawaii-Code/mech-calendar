@@ -6,7 +6,7 @@ async function fetchCalendarData() {
   return response.json();
 }
 
-document.addEventListener('DOMContentLoaded', () => await {
+document.addEventListener('DOMContentLoaded', async () =>  {
   const calendarElement = document.getElementById('calendar');
   if (calendarElement) {
     const calendarData = await fetchCalendarData();
