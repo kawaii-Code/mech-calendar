@@ -5,16 +5,16 @@
   <div class="flex flex-col justify-center items-center h-full">
     <div id="calendar"></div>
     <div class="w-auto h-auto bg-white border border-gray-300 rounded-lg shadow-md flex flex-col justify-center items-center m-4">
-      <p class="m-4 no-select text-lg text-center"><%= "В этом месяце:" %></p>
-      <p class="m-4 no-select text-lg text-center"><%= "У вас было хороших дней: #{@current_user.get_count_good_days}" %></p>
-      <p class="m-4 no-select text-lg text-center"><%= "У вас было плохих дней: #{@current_user.get_count_bad_days}" %></p>
-      <p class="m-4 no-select text-lg text-center"><%= "Самая ваша длинная белая полоса: #{@current_user.get_the_longest_white_stripe}" %></p>
-      <p class="m-4 no-select text-lg text-center"><%= "Самая ваша длинная чёрная полоса: #{@current_user.get_the_longest_black_stripe}" %></p>
-      <p class="m-4 no-select text-lg text-center"><%= "В предыдущем месяце:" %></p>
-      <p class="m-4 no-select text-lg text-center"><%= "У вас было хороших дней: #{@current_user.get_count_good_days_last_full_month}" %></p>
-      <p class="m-4 no-select text-lg text-center"><%= "У вас было плохих дней: #{@current_user.get_count_bad_days_last_full_month}" %></p>
-      <p class="m-4 no-select text-lg text-center"><%= "Самая ваша длинная белая полоса: #{@current_user.get_the_longest_white_stripe_last_full_month}" %></p>
-      <p class="m-4 no-select text-lg text-center"><%= "Самая ваша длинная чёрная полоса: #{@current_user.get_the_longest_black_stripe_last_full_month}" %></p>
+      <p class="m-4 font-semibold no-select text-lg text-center"><%= t("in_this_month")%></p>
+      <p class="m-4 no-select text-lg text-center"><%= "#{t("you_had_good_days")}: #{@current_user.get_count_good_days}" %></p>
+      <p class="m-4 no-select text-lg text-center"><%= "#{t("you_had_bad_days")}: #{@current_user.get_count_bad_days}" %></p>
+      <p class="m-4 no-select text-lg text-center"><%= "#{t("your_longest_white_stripe")}: #{@current_user.get_the_longest_white_stripe}" %></p>
+      <p class="m-4 no-select text-lg text-center"><%= "#{t("your_longest_black_stripe")}: #{@current_user.get_the_longest_black_stripe}" %></p>
+      <p class="m-4 font-semibold no-select text-lg text-center"><%= t("in_last_month") %></p>
+      <p class="m-4 no-select text-lg text-center"><%= "#{t("you_had_good_days")}: #{@current_user.get_count_good_days_last_full_month}" %></p>
+      <p class="m-4 no-select text-lg text-center"><%= "#{t("you_had_bad_days")}: #{@current_user.get_count_bad_days_last_full_month}" %></p>
+      <p class="m-4 no-select text-lg text-center"><%= "#{t("your_longest_white_stripe")}: #{@current_user.get_the_longest_white_stripe_last_full_month}" %></p>
+      <p class="m-4 no-select text-lg text-center"><%= "#{t("your_longest_black_stripe")}: #{@current_user.get_the_longest_black_stripe_last_full_month}" %></p>
     </div>
   </div>
 </div>

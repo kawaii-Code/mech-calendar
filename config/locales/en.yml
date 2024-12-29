@@ -70,3 +70,17 @@ en:
   about_third:
     We hope that over time, MechCalendar will become a
     valuable source of information about your inner state!
+
+  #Calendar
+  in_this_month:
+    "In this month"
+  in_last_month:
+    "In the previous month"
+  you_had_good_days:
+    "You experienced good days"
+  you_had_bad_days:
+    "You experienced bad days"
+  your_longest_white_stripe:
+    "Your longest streak of good days"
+  your_longest_black_stripe:
+    "Your longest streak of bad days"
