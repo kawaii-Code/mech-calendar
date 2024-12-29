@@ -133,7 +133,7 @@ class User < ApplicationRecord
 
     max_stripe = 1
     curr_stripe = 1
-    last_date = bad_days.date
+    last_date = bad_days[0].date
     bad_days.each do |d|
       if (last_date.day - d.date.day) == 1
         curr_stripe +=1
