@@ -22,5 +22,8 @@
     <img class="z-10 hidden no-select fixed right-0 bottom-0" id="right-gradient" src="gradient-green.png"></img>
   </div>
 <% else %>
-  <h2>Вы уже поставиил оцеку</h2>
+  <div class="flex flex-col text-3xl justify-center items-center h-1/4">
+    <h1 class="mt-10"><%= t('you_already_rated_your_day') %></h1>
+    <button class="mt-4 text-lg"><%= t('change_rating') %></h2>
+  </div>
 <% end %>
