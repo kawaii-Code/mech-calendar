@@ -5,13 +5,11 @@ let rightGradient;
 let neutralFace;
 let sadFace;
 let smilingFace;
-let swipeHint;
 
 document.addEventListener('DOMContentLoaded', () => {
     const widget = document.getElementById('swipe-widget');
     leftGradient = document.getElementById('left-gradient');
     rightGradient = document.getElementById('right-gradient');
-    swipeHint = document.getElementById('swipe-hint');
 
     widget.style.borderRadius = '40px';
 
@@ -23,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         startX = e.touches[0].clientX;
         widget.style.transition = 'none';
 
-        showHint(swipeHint);
         showElement(leftGradient);
         showElement(rightGradient);
         showElement(smilingFace);
@@ -56,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         neutralFace.style.opacity = 1;
 
-        hideHint(swipeHint);
         hideElement(smilingFace);
         hideElement(sadFace);
         hideElement(leftGradient);
@@ -66,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
     widget.addEventListener('mousedown', (e) => {
         startX = e.clientX;
 
-        showHint(swipeHint);
         showElement(leftGradient);
         showElement(rightGradient);
         showElement(smilingFace);
@@ -98,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
             widget.style.transition = 'background-color 0.3s ease, transform 0.3s ease';
             widget.style.cursor = 'grab';
 
-            hideHint(swipeHint);
             hideElement(smilingFace);
             hideElement(sadFace);
             hideElement(rightGradient);
