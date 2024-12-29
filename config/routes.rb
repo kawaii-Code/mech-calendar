@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   get "logout"  => "sessions#destroy"
 
   post "day/new" => "days#create"
+
+  get 'calendar_data' => 'calendar#data'
 end
