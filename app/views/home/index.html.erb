@@ -1,15 +1,19 @@
 <%= render 'sidebar' %>
 
-<% if Day.find_by(user_id: User.current) == nil then %>
+<% if User.current.did_not_rate_this_day %>
   <%= javascript_pack_tag "swipe" %>
 
-  <div class="flex text-3xl justify-center items-center h-1/4">
+  <div class="flex flex-col text-3xl justify-center items-center h-1/4">
     <h1 class="mt-10"><%= t('hi') %></h1>
+    <h2 class="mt-4 no-select text-lg"><%= t('how_was_your_day') %></h2>
   </div>
 
   <div class="flex justify-center items-center h-1/2 z-20">
-    <div class="z-30 w-auto h-1/2 bg-white border border-gray-300 rounded-lg shadow-md flex flex-col justify-center items-center transition-transform duration-100 ease-in-out" id="swipe-widget">
-      <h2 class="m-4 no-select text-lg font-semibold text-center"><%= t('how_was_your_day') %></h2>
+    <div class="relative no-select w-1/2 h-auto bg-white transition-transform duration-100 ease-in-out" id="swipe-widget">
+      <img id="neutral-face" src="face_without_mouth.svg" class="no-select pointer-events-none absolute l-0 t-0 w-full h-auto"></img>
+      <img id="sad-face" src="slightly_frowning_face.svg" class="hidden no-select pointer-events-none absolute l-0 t-0 w-full h-auto"></img>
+      <img id="smiling-face" src="slightly_smiling_face.svg" class="hidden no-select pointer-events-none absolute l-0 t-0 w-full h-auto"></img>
+      <img src="background.svg" class="no-select pointer-events-none w-full h-auto"></img>
     </div>
   </div>
 

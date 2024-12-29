@@ -16,5 +16,5 @@ Rails.application.routes.draw do
 
   post "day/new" => "days#create"
 
-  get 'calendar_data' => 'calendar#data'
+  get "calendar_data" => "calendar#data"
 end

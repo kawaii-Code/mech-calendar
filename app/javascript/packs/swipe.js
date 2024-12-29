@@ -1,19 +1,30 @@
 const threshold = 20;
-let leftGradient;
 let startX;
+let leftGradient;
 let rightGradient;
+let neutralFace;
+let sadFace;
+let smilingFace;
 
 document.addEventListener('DOMContentLoaded', () => {
     const widget = document.getElementById('swipe-widget');
     leftGradient = document.getElementById('left-gradient');
     rightGradient = document.getElementById('right-gradient');
 
+    widget.style.borderRadius = '50px';
+
+    neutralFace = document.getElementById('neutral-face');
+    sadFace = document.getElementById('sad-face');
+    smilingFace = document.getElementById('smiling-face');
+
     widget.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
         widget.style.transition = 'none';
 
-        leftGradient.classList.remove('hidden');
-        rightGradient.classList.remove('hidden');
+        showElement(leftGradient);
+        showElement(rightGradient);
+        showElement(smilingFace);
+        showElement(sadFace);
     });
 
     let lastX;
@@ -40,15 +51,20 @@ document.addEventListener('DOMContentLoaded', () => {
         widget.style.backgroundColor = 'white';
         widget.style.transition = 'background-color 0.3s ease, transform 0.3s ease';
 
-        leftGradient.classList.add('hidden');
-        rightGradient.classList.add('hidden');
+        neutralFace.style.opacity = 1;
+        hideElement(smilingFace);
+        hideElement(sadFace);
+        hideElement(leftGradient);
+        hideElement(rightGradient);
     });
 
     widget.addEventListener('mousedown', (e) => {
         startX = e.clientX;
 
-        leftGradient.classList.remove('hidden');
-        rightGradient.classList.remove('hidden');
+        showElement(leftGradient);
+        showElement(rightGradient);
+        showElement(smilingFace);
+        showElement(sadFace);
 
         widget.style.transition = 'none';
         widget.style.cursor = 'grabbing';
@@ -76,8 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
             widget.style.transition = 'background-color 0.3s ease, transform 0.3s ease';
             widget.style.cursor = 'grab';
 
-            leftGradient.classList.add('hidden');
-            rightGradient.classList.add('hidden');
+            hideElement(smilingFace);
+            hideElement(sadFace);
+            hideElement(rightGradient);
+            hideElement(leftGradient);
 
             document.removeEventListener('mousemove', mouseMoveHandler);
             document.removeEventListener('mouseup', mouseUpHandler);
@@ -87,6 +105,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('mouseup', mouseUpHandler);
     });
 });
+
+function showElement(elem) {
+    elem.classList.remove('hidden');
+    elem.style.opacity = 0;
+}
+
+function hideElement(elem) {
+    elem.classList.add('hidden');
+}
 
 function sendDayReview(rating) {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -119,19 +146,23 @@ function moveWidget(widget, diffX) {
     const windowWidth = window.innerWidth;
     widget.style.transform = `translateX(${diffX}px)`;
 
-    if (diffX > 0) {
-        const t = diffX / (windowWidth - startX)
-        const greenValue = 255 * t;
-        widget.style.backgroundColor = `rgb(${255 - greenValue}, 255, ${255 - greenValue})`;
-
-        leftGradient.style.opacity = 0;
-        rightGradient.style.opacity = t;
-    } else {
+    if (diffX <= 0) {
         const t = (-diffX / startX)
         const redValue = 255 * t;
-        widget.style.backgroundColor = `rgb(255, ${255 - redValue}, ${255 - redValue})`;
 
+        widget.style.backgroundColor = `rgb(255, ${255 - redValue}, ${255 - redValue})`;
         leftGradient.style.opacity = t;
         rightGradient.style.opacity = 0;
+
+        sadFace.style.opacity = t;
+    } else {
+        const t = diffX / (windowWidth - startX)
+        const greenValue = 255 * t;
+
+        widget.style.backgroundColor = `rgb(${255 - greenValue}, 255, ${255 - greenValue})`;
+        leftGradient.style.opacity = 0;
+        rightGradient.style.opacity = t;
+
+        smilingFace.style.opacity = t;
     }
 }

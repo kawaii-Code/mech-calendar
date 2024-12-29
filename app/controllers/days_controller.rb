@@ -8,6 +8,7 @@
         flash[:alert] = "Произошла ошибка при сохранении оценки дня."
       end
 
+      expires_now
       redirect_to root_path
     end
 
