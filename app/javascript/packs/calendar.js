@@ -19,10 +19,11 @@ document.addEventListener('DOMContentLoaded', async () =>  {
       if (dayElement) {
         if (day.rating === 'good') {
           // Цвет фона зелёный для 'good' - красный для 'bad'
-          dayElement.children.item(0).style = '#46eb34'
+          dayElement.children.item(0).style.background = '#46eb34'
+          dayElement.children.item(0).style.color = 'white';
         } else if (day.rating === 'bad') {
-          dayElement.children.item(0).style = '#eb4034'
-          dayElement.style.color = 'white';
+          dayElement.children.item(0).style.background = '#eb4034'
+          dayElement.children.item(0).style.color = 'white';
         }
       }
     });
