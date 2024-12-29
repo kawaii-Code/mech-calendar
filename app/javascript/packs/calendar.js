@@ -12,16 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const calendarData = fetchCalendarData();
     const calendar = new Calendar('#calendar');
     calendar.init();
+
     // Раскраска😊
-    calendarData.forEach(event => {
-      const dayElement = document.querySelector(`[data-calendar-date="${event.date}"]`);
+    calendarData.forEach(day => {
+      const dayElement = document.querySelector(`[data-calendar-date="${day.date}"]`);
       if (dayElement) {
-        if (event.rating === 'good') {
-          dayElement.style.backgroundColor = 'green'; // Зелёный для 'good'
+        if (day.rating === 'good') {
+          dayElement.style.backgroundColor = 'green'; // Цвет фона зелёный для 'good' - красный для 'bad'
           dayElement.style.color = 'white'; // Цвет текста
-        } else if (event.rating === 'bad') {
-          dayElement.style.backgroundColor = 'red'; // Красный для 'bad'
-          dayElement.style.color = 'white'; // Цвет текста
+        } else if (day.rating === 'bad') {
+          dayElement.style.backgroundColor = 'red';
+          dayElement.style.color = 'white';
         }
       }
     });
