@@ -32,6 +32,7 @@ async function colorify() {
 
 document.addEventListener('DOMContentLoaded', async () =>  {
   const calendarElement = document.getElementById('calendar');
+
   if (calendarElement) {
 
     const calendar = new Calendar('#calendar', {
@@ -41,8 +42,11 @@ document.addEventListener('DOMContentLoaded', async () =>  {
       async onInit() {colorify()},
     } );
     calendar.init();
-
   } else {
     console.error('#calendar is not found');
   }
 });
+
+function myShow(calendar) {
+      console.log('hello');
+}

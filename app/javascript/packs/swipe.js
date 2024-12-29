@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     leftGradient = document.getElementById('left-gradient');
     rightGradient = document.getElementById('right-gradient');
 
-    widget.style.borderRadius = '50px';
+    widget.style.borderRadius = '40px';
 
     neutralFace = document.getElementById('neutral-face');
     sadFace = document.getElementById('sad-face');
