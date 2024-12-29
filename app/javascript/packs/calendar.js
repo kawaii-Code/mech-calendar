@@ -6,16 +6,16 @@ async function fetchCalendarData() {
   return response.json();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => await {
   const calendarElement = document.getElementById('calendar');
   if (calendarElement) {
-    const calendarData = fetchCalendarData();
+    const calendarData = await fetchCalendarData();
     const calendar = new Calendar('#calendar');
     calendar.init();
 
     // Раскраска😊
     calendarData.forEach(day => {
-      const dayElement = document.querySelector(`[data-calendar-date="${day.date}"]`);
+      const dayElement = document.querySelector(`[data-vc-date="${day.date}"]`);
       if (dayElement) {
         if (day.rating === 'good') {
           dayElement.style.backgroundColor = 'green'; // Цвет фона зелёный для 'good' - красный для 'bad'
