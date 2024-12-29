@@ -29,7 +29,7 @@ class StatisticsTest < ActiveSupport::TestCase
   end
 
   test "get_the_longest_white_stripe returns the correct length" do
-    assert @user.get_the_white_black_stripe == 3  # 😢
+    assert @user.get_the_longest_white_stripe == 3  # 😢
   end
 
   test "get_count_good_days returns the correct value" do
@@ -37,11 +37,11 @@ class StatisticsTest < ActiveSupport::TestCase
   end
 
   test "get_count_bad_days returns the correct value" do
-    assert @user.get_count_good_days == 11  # 😭
+    assert @user.get_count_bad_days == 11  # 😭
   end
 
   test "get_count_bad_days_last_full_month returns the correct value" do
-    assert @user.get_count_good_days_last_full_month == 6
+    assert @user.get_count_bad_days_last_full_month == 6
   end
 
   test "get_count_good_days_last_full_month returns the correct value" do
@@ -53,6 +53,6 @@ class StatisticsTest < ActiveSupport::TestCase
   end
 
   test "get_the_longest_white_stripe_last_full_month returns the correct length" do
-    assert @user.get_the_white_black_stripe_last_full_month == 3
+    assert @user.get_the_longest_white_stripe_last_full_month == 3
   end
 end
