@@ -9,24 +9,28 @@ async function fetchCalendarData() {
 document.addEventListener('DOMContentLoaded', async () =>  {
   const calendarElement = document.getElementById('calendar');
   if (calendarElement) {
-    const calendarData = await fetchCalendarData();
-    const calendar = new Calendar('#calendar');
+
+    const calendar = new Calendar('#calendar', {
+      async onUpdate(self) {
+        const calendarData = await fetchCalendarData();
+        // Раскраска😊
+        calendarData.forEach(day => {
+          const dayElement = document.querySelector(`[data-vc-date="${day.date}"]`);
+          if (dayElement) {
+            if (day.rating === 'good') {
+              // Цвет фона зелёный для 'good' - красный для 'bad'
+              dayElement.children.item(0).style.background = '#46eb34'
+              dayElement.children.item(0).style.color = 'white';
+            } else if (day.rating === 'bad') {
+              dayElement.children.item(0).style.background = '#eb4034'
+              dayElement.children.item(0).style.color = 'white';
+            }
+          }
+        });
+      }
+    } );
     calendar.init();
 
-    // Раскраска😊
-    calendarData.forEach(day => {
-      const dayElement = document.querySelector(`[data-vc-date="${day.date}"]`);
-      if (dayElement) {
-        if (day.rating === 'good') {
-          // Цвет фона зелёный для 'good' - красный для 'bad'
-          dayElement.children.item(0).style.background = '#46eb34'
-          dayElement.children.item(0).style.color = 'white';
-        } else if (day.rating === 'bad') {
-          dayElement.children.item(0).style.background = '#eb4034'
-          dayElement.children.item(0).style.color = 'white';
-        }
-      }
-    });
   } else {
     console.error('#calendar is not found');
   }
