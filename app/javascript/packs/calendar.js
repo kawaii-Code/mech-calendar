@@ -8,7 +8,13 @@ async function fetchCalendarData() {
 
 async function colorify() {
   const calendarData = await fetchCalendarData();
-  // Раскраска😊
+
+  //unproper Раскраска😧
+  document.querySelectorAll('.vc-date button').forEach(but =>{
+    but.style.color = 'black'
+  })
+
+  // proper Раскраска😊
   calendarData.forEach(day => {
     const dayElement = document.querySelector(`[data-vc-date="${day.date}"]`);
     if (dayElement) {
