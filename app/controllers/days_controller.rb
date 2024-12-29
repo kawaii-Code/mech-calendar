@@ -1,20 +1,30 @@
  class DaysController < ApplicationController
-    def create
-      @day = Day.new(user: User.current, date: Date.today, rating: rating_params)
+   include Authentication
 
-      if @day.save
-        flash[:notice] = "Ваш день был успешно оценен!"
-      else
-        flash[:alert] = "Произошла ошибка при сохранении оценки дня."
-      end
+   def create
+     @day = Day.new(user: User.current, date: Date.today, rating: rating_params)
 
-      expires_now
-      redirect_to root_path
-    end
+     if @day.save
+       flash[:notice] = "Ваш день был успешно оценен!"
+     else
+       flash[:alert] = "Произошла ошибка при сохранении оценки дня."
+     end
 
-    private
+     redirect_to root_path
+   end
 
-    def rating_params
-      params.require(:rating)
-    end
+   def delete
+     day = Day.find_by(user: User.current, date: Date.today)
+     if day
+       Day.delete(day)
+     end
+
+     redirect_to root_path
+   end
+
+   private
+
+   def rating_params
+     params.require(:rating)
+   end
  end

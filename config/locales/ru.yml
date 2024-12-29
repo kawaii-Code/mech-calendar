@@ -8,13 +8,17 @@ ru:
   enter_your_password: "Введите пароль"
   confirm_your_password: "Подтвердите пароль"
   forgot_password: "Забыли пароль?"
+  forgot_your_password: "Забыли пароль? 😭"
+  send_reset_code: "Отправить код"
+  already_have_an_account: "Уже есть аккаунт? Войдите!"
+  save: "Сохранить"
 
   # Main page
   hi: "Привет 👋"
   bad: "Bad"
   good: "Good"
   how_was_your_day: "Как прошел твой день?"
-  you_already_rated_your_day: "Вы уже оценили свой день 😐"
+  you_already_rated_your_day: "Ваша оценка сохранена! 👍"
   change_rating: "Изменить оценку ✏️"
 
   # Sidebar

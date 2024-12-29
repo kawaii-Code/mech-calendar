@@ -1,4 +1,5 @@
 class RegistrationsController < ApplicationController
+  include Authentication
   allow_unauthenticated_access
   layout "forms"
 

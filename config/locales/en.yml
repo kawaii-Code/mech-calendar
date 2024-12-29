@@ -37,13 +37,17 @@ en:
   enter_your_password: "Enter your password"
   confirm_your_password: "Confirm your password"
   forgot_password: "Forgot password?"
+  forgot_your_password: "Forgot your password?"
+  send_reset_code: "Send reset code"
+  already_have_an_account: "Already have an account? Sign in"
+  save: "Save"
 
   # Main page
   hi: "Hi!"
   bad: "Bad"
   good: "Good"
   how_was_your_day: "How was your day?"
-  you_already_rated_your_day: "You already rated your day"
+  you_already_rated_your_day: "Your day rating was saved!"
   change_rating: "Change day rating"
 
   # Sidebar

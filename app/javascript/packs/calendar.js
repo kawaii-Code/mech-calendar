@@ -18,13 +18,15 @@ async function colorify() {
   calendarData.forEach(day => {
     const dayElement = document.querySelector(`[data-vc-date="${day.date}"]`);
     if (dayElement) {
-      if (day.rating === 'good') {
-        // Цвет фона зелёный для 'good' - красный для 'bad'
-        dayElement.children.item(0).style.background = '#46eb34'
-        dayElement.children.item(0).style.color = 'white';
-      } else if (day.rating === 'bad') {
-        dayElement.children.item(0).style.background = '#eb4034'
-        dayElement.children.item(0).style.color = 'white';
+      if (dayElement.children.length > 0) {
+        if (day.rating === 'good') {
+          // Цвет фона зелёный для 'good' - красный для 'bad'
+          dayElement.children.item(0).style.background = '#46eb34'
+          dayElement.children.item(0).style.color = 'white';
+        } else if (day.rating === 'bad') {
+          dayElement.children.item(0).style.background = '#eb4034'
+          dayElement.children.item(0).style.color = 'white';
+        }
       }
     }
   });
@@ -39,7 +41,12 @@ document.addEventListener('DOMContentLoaded', async () =>  {
       async onUpdate(self)  {colorify()},
       async onShow(self)  {colorify()},
       async onClickArrow(self)  {colorify()},
+      async onClickMonth(self, event) {colorify()},
+      async onClickYear(self, event) {colorify()},
+      async onClickWeekDay(self, number, year, dateEls, event) {colorify()},
+      async onClickWeekNumber(self, number, year, dateEls, event) {colorify()},
       async onInit() {colorify()},
+      displayDatesOutside: false,
     } );
     calendar.init();
   } else {

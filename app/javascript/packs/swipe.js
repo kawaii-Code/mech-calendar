@@ -128,6 +128,7 @@ function sendDayReview(rating) {
         if (!response.ok) {
             console.error('error on post to /bad_day!');
         }
+        location.reload();
     }).catch(error => {
         console.error('Error during POST: ', error);
     });
