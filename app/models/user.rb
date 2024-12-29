@@ -45,7 +45,7 @@ class User < ApplicationRecord
 
     max_stripe = 1
     curr_stripe = 1
-    last_date = Date.today
+    last_date = good_days[0].date
     good_days.each do |d|
       if (last_date.day - d.date.day) == 1
         curr_stripe +=1
@@ -56,6 +56,9 @@ class User < ApplicationRecord
         curr_stripe = 1
       end
       last_date = d.date
+    end
+    if curr_stripe > max_stripe
+      max_stripe = curr_stripe
     end
     max_stripe
   end
@@ -68,7 +71,7 @@ class User < ApplicationRecord
 
     max_stripe = 1
     curr_stripe = 1
-    last_date = Date.today
+    last_date = bad_days[0].date
     bad_days.each do |d|
       if (last_date.day - d.date.day) == 1
         curr_stripe +=1
@@ -79,6 +82,9 @@ class User < ApplicationRecord
         curr_stripe = 1
       end
       last_date = d.date
+    end
+    if curr_stripe > max_stripe
+      max_stripe = curr_stripe
     end
     max_stripe
   end
@@ -96,7 +102,7 @@ class User < ApplicationRecord
 
     max_stripe = 1
     curr_stripe = 1
-    last_date = Date.today
+    last_date = good_days[0].date
     good_days.each do |d|
       if (last_date.day - d.date.day) == 1
         curr_stripe +=1
@@ -107,6 +113,9 @@ class User < ApplicationRecord
         curr_stripe = 1
       end
       last_date = d.date
+    end
+    if curr_stripe > max_stripe
+      max_stripe = curr_stripe
     end
     max_stripe
   end
@@ -124,7 +133,7 @@ class User < ApplicationRecord
 
     max_stripe = 1
     curr_stripe = 1
-    last_date = Date.today
+    last_date = bad_days.date
     bad_days.each do |d|
       if (last_date.day - d.date.day) == 1
         curr_stripe +=1
@@ -135,6 +144,9 @@ class User < ApplicationRecord
         curr_stripe = 1
       end
       last_date = d.date
+    end
+    if curr_stripe > max_stripe
+      max_stripe = curr_stripe
     end
     max_stripe
   end
