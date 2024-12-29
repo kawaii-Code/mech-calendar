@@ -31,9 +31,9 @@ class User < ApplicationRecord
 
   def get_count_bad_days_last_full_month
     if Date.today.month == 1
-      days.where("cast(strftime('%Y',date) as INT) = ?", Date.today.year - 1).where("cast(strftime('%m',date) as INT) = ?", 12).where("rating = ?", "good").count
+      days.where("cast(strftime('%Y',date) as INT) = ?", Date.today.year - 1).where("cast(strftime('%m',date) as INT) = ?", 12).where("rating = ?", "bad").count
     else
-      days.where("cast(strftime('%Y',date) as INT) = ?", Date.today.year).where("cast(strftime('%m',date) as INT) = ?", Date.today.month - 1).where("rating = ?", "good").count
+      days.where("cast(strftime('%Y',date) as INT) = ?", Date.today.year).where("cast(strftime('%m',date) as INT) = ?", Date.today.month - 1).where("rating = ?", "bad").count
     end
   end
 
