@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', async () =>  {
       const dayElement = document.querySelector(`[data-vc-date="${day.date}"]`);
       if (dayElement) {
         if (day.rating === 'good') {
-          dayElement.style.backgroundColor = 'green'; // Цвет фона зелёный для 'good' - красный для 'bad'
-          dayElement.style.color = 'white'; // Цвет текста
+          // Цвет фона зелёный для 'good' - красный для 'bad'
+          dayElement.children.item(0).style = '#46eb34'
         } else if (day.rating === 'bad') {
-          dayElement.style.backgroundColor = 'red';
+          dayElement.children.item(0).style = '#eb4034'
           dayElement.style.color = 'white';
         }
       }
