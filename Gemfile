@@ -70,4 +70,4 @@ gem "tailwindcss-rails", "~> 3.0"
 
 gem "webpacker", "~> 5.4"
 
-gem "irb", "~> 1.14"
+gem "irb", "~> 1.15"
